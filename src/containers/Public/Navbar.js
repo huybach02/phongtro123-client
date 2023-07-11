@@ -1,48 +1,50 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import {NavLink} from "react-router-dom";
-
-const nav = [
-  {
-    name: "Trang chu",
-    path: "",
-  },
-  {
-    name: "Cho thue phong tro",
-    path: "cho-thue-phong-tro",
-  },
-  {
-    name: "Nha cho thue",
-    path: "nha-cho-thue",
-  },
-  {
-    name: "Cho thue can ho",
-    path: "cho-thue-can-ho",
-  },
-  {
-    name: "Cho thue mat bang",
-    path: "cho-thue-mat-bang",
-  },
-];
+import {apiGetCategories} from "../../services/category";
+import {formatVietnameseToSlug} from "../../utils/constant";
 
 const Navbar = () => {
+  const [categories, setCategories] = useState([]);
+
+  useEffect(() => {
+    const fetchCategories = async () => {
+      const res = await apiGetCategories();
+      if (res?.data?.err === 0) {
+        setCategories(res?.data?.res);
+      }
+    };
+
+    fetchCategories();
+  }, []);
+
   return (
-    <div className="w-screen min-h-[40px] flex items-center justify-center bg-bluePrimary text-white mb-3">
+    <div className="w-full h-[40px] flex items-center justify-center bg-bluePrimary text-white ">
       <div className="w-1100 h-full flex items-center text-[16px] font-semibold">
-        {nav.length > 0 &&
-          nav.map((item, index) => (
+        <NavLink
+          to={"/"}
+          className={({isActive}) =>
+            isActive
+              ? "bg-redPrimary px-3 h-full flex items-center"
+              : "hover:bg-redPrimary px-3 h-full flex items-center"
+          }
+        >
+          Trang chủ
+        </NavLink>
+        {categories.length > 0 &&
+          categories.map((item) => (
             <div
-              key={index}
+              key={item.code}
               className="h-full flex items-center justify-center"
             >
               <NavLink
-                to={item.path}
+                to={`${formatVietnameseToSlug(item.value)}`}
                 className={({isActive}) =>
                   isActive
                     ? "bg-redPrimary px-3 h-full flex items-center"
                     : "hover:bg-redPrimary px-3 h-full flex items-center"
                 }
               >
-                {item.name}
+                {item.value}
               </NavLink>
             </div>
           ))}

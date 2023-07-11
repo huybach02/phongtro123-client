@@ -12,9 +12,9 @@ const Button = ({
   return (
     <button
       type="button"
-      className={`p-2 ${textColor} ${
+      className={`p-2 ${textColor || "text-black"} ${
         bgColor || "bg-bluePrimary"
-      } outline-none rounded-lg flex items-center justify-between gap-2 text-white ${styleOther}`}
+      } outline-none rounded-lg flex items-center justify-between gap-2 ${styleOther}`}
       onClick={onClick}
     >
       <span>{IconBefore && <IconBefore size={20} />}</span>

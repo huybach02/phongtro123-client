@@ -1,8 +1,12 @@
 import React from "react";
 import Province from "../../components/Province";
 import List from "./List";
+import ItemSidebar from "../../components/ItemSidebar";
+import {useSelector} from "react-redux";
 
 const HomePage = () => {
+  const {categories} = useSelector((state) => state.app);
+
   return (
     <div className="w-full flex flex-col gap-3 px-3 lg:px-0">
       <div>
@@ -18,10 +22,14 @@ const HomePage = () => {
       <Province />
 
       <div className="w-full flex gap-4">
-        <div className="w-[70%]">
+        <div className="w-[70%] shadow-sm">
           <List />
         </div>
-        <div className="w-[30%] border border-blue-500">sidebar</div>
+        <div className="w-[30%]  flex flex-col gap-5 items-center justify-start shadow-sm">
+          <ItemSidebar content={categories} title={"Danh mục cho thuê"} />
+          <ItemSidebar title={"Xem theo giá"} />
+          <ItemSidebar title={"Xem theo diện tích"} />
+        </div>
       </div>
     </div>
   );

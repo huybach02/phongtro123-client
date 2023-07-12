@@ -5,6 +5,7 @@ import {IoIosPricetag} from "react-icons/io";
 import {MdLocationOn} from "react-icons/md";
 import {RxSize} from "react-icons/rx";
 import {RiCrop2Line} from "react-icons/ri";
+import {FiChevronRight} from "react-icons/fi";
 
 const icons = {
   AiOutlineSearch,
@@ -18,6 +19,7 @@ const icons = {
   AiFillStar,
   BsSuitHeartFill,
   BsSuitHeart,
+  FiChevronRight,
 };
 
 export default icons;

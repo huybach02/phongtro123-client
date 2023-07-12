@@ -1,20 +1,15 @@
-import React, {useEffect, useState} from "react";
+import React, {useEffect} from "react";
 import {NavLink} from "react-router-dom";
-import {apiGetCategories} from "../../services/category";
-import {formatVietnameseToSlug, path} from "../../utils/constant";
+import {formatVietnameseToSlug} from "../../utils/constant";
+import {useDispatch, useSelector} from "react-redux";
+import {getCategories} from "../../store/action/appAction";
 
 const Navbar = () => {
-  const [categories, setCategories] = useState([]);
+  const dispatch = useDispatch();
+  const {categories} = useSelector((state) => state.app);
 
   useEffect(() => {
-    const fetchCategories = async () => {
-      const res = await apiGetCategories();
-      if (res?.data?.err === 0) {
-        setCategories(res?.data?.res);
-      }
-    };
-
-    fetchCategories();
+    dispatch(getCategories());
   }, []);
 
   return (

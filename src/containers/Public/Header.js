@@ -1,8 +1,8 @@
-import React, {useCallback} from "react";
+import React, {useCallback, useEffect, useRef} from "react";
 import logo from "../../assets/logo.png";
 import Button from "../../components/Button";
 import icons from "../../utils/icons";
-import {useNavigate, Link} from "react-router-dom";
+import {useNavigate, Link, useSearchParams} from "react-router-dom";
 import {path} from "../../utils/constant";
 import {useSelector, useDispatch} from "react-redux";
 import {logout} from "../../store/action/authAction";
@@ -10,9 +10,11 @@ import {logout} from "../../store/action/authAction";
 const {AiOutlinePlusCircle} = icons;
 
 const Header = () => {
+  const [params] = useSearchParams();
   const dispatch = useDispatch();
   const {isLogin} = useSelector((state) => state.auth);
   const navigate = useNavigate();
+  const headerRef = useRef();
   const goLogin = useCallback((flag) => {
     navigate(path.LOGIN, {
       state: {
@@ -21,10 +23,14 @@ const Header = () => {
     });
   }, []);
 
+  useEffect(() => {
+    headerRef.current.scrollIntoView({behavior: "smooth", block: "start"});
+  }, [params.get("page")]);
+
   return (
-    <div className="lg:w-1100 sm:w-full sm:px-3 lg:px-0">
+    <div ref={headerRef} className="lg:w-1100 sm:w-full sm:px-3 lg:px-0">
       <div className="w-full flex items-center justify-between">
-        <Link to={"/"}>
+        <Link to={""}>
           <img
             src={logo}
             alt=""

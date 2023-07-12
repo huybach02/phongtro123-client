@@ -1,5 +1,7 @@
 import React, {memo} from "react";
 import icons from "../utils/icons";
+import {Link, useNavigate} from "react-router-dom";
+import {formatVietnameseToSlug} from "../utils/constant";
 
 const {AiFillStar, BsSuitHeartFill, BsSuitHeart} = icons;
 const indexs = [0];
@@ -12,12 +14,28 @@ const Item = ({
   star,
   title,
   user,
+  id,
 }) => {
+  const navigate = useNavigate();
+
+  const handleStar = (star) => {
+    let stars = [];
+    for (let i = 1; i <= +star; i++) {
+      stars.push(i);
+    }
+    return stars;
+  };
+
   return (
     <div className="w-full flex gap-2 bg-list p-4 border border-t-red-500">
       <div className="w-2/5 flex flex-wrap gap-[2px] items-center relative cursor-pointer">
         {/* <div className="flex gap-1"> */}
-        <div className="w-[280px] h-[240px]">
+        <Link
+          to={`chi-tiet/${formatVietnameseToSlug(
+            title.replace("/", "-")
+          )}/${id}`}
+          className="w-[280px] h-[240px]"
+        >
           {images.length > 0 &&
             images
               .filter((i, index) => indexs.some((i) => i === index))
@@ -29,7 +47,7 @@ const Item = ({
                   className="w-full h-full object-cover"
                 />
               ))}
-        </div>
+        </Link>
         <span className="bg-[#3e4748] text-white px-2 rounded-md text-[14px] absolute bottom-1 left-1">
           {`${images.length} ảnh`}
         </span>
@@ -41,23 +59,28 @@ const Item = ({
       <div className="w-3/5">
         <div>
           <div className="flex items-center">
-            <AiFillStar color="#ffd454" size={18} />
-            <AiFillStar color="#ffd454" size={18} />
-            <AiFillStar color="#ffd454" size={18} />
-            <AiFillStar color="#ffd454" size={18} />
-            <AiFillStar color="#ffd454" size={18} />
+            {handleStar(star).length > 0 &&
+              handleStar(star).map((item, index) => (
+                <AiFillStar key={index} color="#ffd454" size={18} />
+              ))}
           </div>
-          <h2 className="text-redPrimary font-bold text-[14px] hover:underline cursor-pointer">
-            {title}
-          </h2>
+          <Link
+            to={`chi-tiet/${formatVietnameseToSlug(
+              title.replace("/", "-")
+            )}/${id}`}
+          >
+            <h2 className="text-redPrimary font-bold text-[14px] hover:underline cursor-pointer">
+              {title}
+            </h2>
+          </Link>
           <div className="flex items-center gap-x-5 flex-wrap py-2">
             <span className="text-[16px] font-bold text-greenPrimary">
               {attributes?.price}
             </span>
             <span className="text-[14px]">{attributes?.acreage}</span>
             <span className="text-[14px]">{`${
-              address.length > 30 ? `${address.slice(0, 30)}...` : address
-            }`}</span>
+              address.split(",")[address.split(",").length - 2]
+            },${address.split(",")[address.split(",").length - 1]}`}</span>
           </div>
         </div>
         <p className="text-[14px] text-greyPrimary">

@@ -16,7 +16,7 @@ const Navbar = () => {
     <div className="w-full h-[40px] flex items-center justify-center bg-bluePrimary text-white ">
       <div className="w-1100 h-full flex items-center text-[16px] font-semibold">
         <NavLink
-          to={""}
+          to={"/"}
           className={({isActive}) =>
             isActive
               ? "bg-redPrimary px-3 h-full flex items-center"

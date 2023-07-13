@@ -1,5 +1,9 @@
 import React, {memo} from "react";
-import {createSearchParams, useNavigate} from "react-router-dom";
+import {
+  createSearchParams,
+  useNavigate,
+  useSearchParams,
+} from "react-router-dom";
 
 const notActive =
   "px-[18px] py-[10px] bg-white rounded-lg hover:bg-[#ddd] cursor-pointer";
@@ -9,12 +13,24 @@ const active =
 const PageNumber = ({text, number, current, setCurrentPage, type}) => {
   const navigate = useNavigate();
 
+  const [params] = useSearchParams();
+  let entries = params.entries();
+
+  const append = (entries) => {
+    let param = [];
+    params.append("page", +number);
+    for (let entry of entries) {
+      param.push(entry);
+    }
+    let a = {};
+    param?.map((item) => (a = {...a, [item[0]]: item[1]}));
+    return a;
+  };
+
   const handleChangePage = () => {
     navigate({
       pathname: "",
-      search: createSearchParams({
-        page: number,
-      }).toString(),
+      search: createSearchParams(append(entries)).toString(),
     });
     if (type === "end") {
       setCurrentPage(number);

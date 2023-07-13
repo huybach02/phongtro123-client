@@ -14,7 +14,7 @@ function App() {
     <div className=" bg-greyPrimary">
       <Routes>
         <Route path={path.HOME} element={<Home />}>
-          <Route path={path.HOME} element={<HomePage />} />
+          <Route path={"*"} element={<HomePage />} />
           <Route path={path.LOGIN} element={<Login />} />
           <Route path={path.CHO_THUE_CAN_HO} element={<ChoThueCanHo />} />
           <Route path={path.CHO_THUE_MAT_BANG} element={<ChoThueMatBang />} />

@@ -1,11 +1,18 @@
-import React from "react";
+import React, {useEffect} from "react";
 import Province from "../../components/Province";
 import List from "./List";
 import ItemSidebar from "../../components/ItemSidebar";
-import {useSelector} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
+import {getAreas, getPrices} from "../../store/action/appAction";
 
 const HomePage = () => {
-  const {categories} = useSelector((state) => state.app);
+  const dispatch = useDispatch();
+  const {categories, prices, areas} = useSelector((state) => state.app);
+
+  useEffect(() => {
+    dispatch(getPrices());
+    dispatch(getAreas());
+  }, []);
 
   return (
     <div className="w-full flex flex-col gap-3 px-3 lg:px-0">
@@ -22,13 +29,21 @@ const HomePage = () => {
       <Province />
 
       <div className="w-full flex gap-4">
-        <div className="w-[70%] shadow-sm">
+        <div className="w-[70%] ">
           <List />
         </div>
-        <div className="w-[30%]  flex flex-col gap-5 items-center justify-start shadow-sm">
-          <ItemSidebar content={categories} title={"Danh mục cho thuê"} />
-          <ItemSidebar title={"Xem theo giá"} />
-          <ItemSidebar title={"Xem theo diện tích"} />
+        <div className="w-[30%]  flex flex-col gap-5 items-center justify-start ">
+          <ItemSidebar
+            content={categories}
+            title={"Danh mục cho thuê"}
+            isCategory
+          />
+          <ItemSidebar
+            content={prices}
+            type={"priceCode"}
+            title={"Xem theo giá"}
+          />
+          <ItemSidebar content={areas} title={"Xem theo diện tích"} />
         </div>
       </div>
     </div>

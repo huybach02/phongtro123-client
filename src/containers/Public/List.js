@@ -13,9 +13,17 @@ const List = () => {
   const {posts} = useSelector((state) => state.post);
 
   useEffect(() => {
-    let page = params.get("page") ? params.get("page") - 1 : 0;
-    dispatch(getPostsLimit(page));
-  }, [params.get("page")]);
+    let param = [];
+    for (let entry of params.entries()) {
+      param.push(entry);
+    }
+    let searchParamObject = {};
+    param?.map(
+      (item) => (searchParamObject = {...searchParamObject, [item[0]]: item[1]})
+    );
+
+    dispatch(getPostsLimit(searchParamObject));
+  }, [params]);
 
   return (
     <>

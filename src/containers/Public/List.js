@@ -68,7 +68,7 @@ const List = () => {
         </div>
       </div>
       <div>
-        <Pagination number={params.get("page")} />
+        <Pagination />
       </div>
     </>
   );

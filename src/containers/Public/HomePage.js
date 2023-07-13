@@ -43,7 +43,11 @@ const HomePage = () => {
             type={"priceCode"}
             title={"Xem theo giá"}
           />
-          <ItemSidebar content={areas} title={"Xem theo diện tích"} />
+          <ItemSidebar
+            content={areas}
+            type={"areaCode"}
+            title={"Xem theo diện tích"}
+          />
         </div>
       </div>
     </div>

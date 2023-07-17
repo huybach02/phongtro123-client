@@ -1,4 +1,4 @@
-import {apiGetAreas, apiGetPrices} from "../../services/app";
+import {apiGetAreas, apiGetPrices, apiGetProvinces} from "../../services/app";
 import {apiGetCategories} from "../../services/category";
 import actionTypes from "./actionTypes";
 
@@ -67,6 +67,30 @@ export const getAreas = () => async (action) => {
     action({
       type: actionTypes.GET_AREA,
       areas: null,
+    });
+  }
+};
+
+export const getProvinces = () => async (action) => {
+  try {
+    const res = await apiGetProvinces();
+    if (res?.data?.err === 0) {
+      action({
+        type: actionTypes.GET_PROVINCE,
+        provinces: res?.data?.res,
+        msg: "",
+      });
+    } else {
+      action({
+        type: actionTypes.GET_PROVINCE,
+        msg: res.data.msg,
+      });
+    }
+  } catch (error) {
+    action({
+      type: actionTypes.GET_PROVINCE,
+      provinces: null,
+      msg: error,
     });
   }
 };

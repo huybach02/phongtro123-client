@@ -6,7 +6,7 @@ import {getPostsLimit} from "../../store/action/postAction";
 import Pagination from "./Pagination";
 import {useSearchParams} from "react-router-dom";
 
-const List = () => {
+const List = ({categoryCode}) => {
   const [params] = useSearchParams();
 
   const dispatch = useDispatch();
@@ -21,9 +21,12 @@ const List = () => {
     param?.map(
       (item) => (searchParamObject = {...searchParamObject, [item[0]]: item[1]})
     );
+    if (categoryCode) {
+      searchParamObject.categoryCode = categoryCode;
+    }
 
     dispatch(getPostsLimit(searchParamObject));
-  }, [params]);
+  }, [params, categoryCode]);
 
   return (
     <>

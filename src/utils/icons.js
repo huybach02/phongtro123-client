@@ -6,6 +6,7 @@ import {MdLocationOn} from "react-icons/md";
 import {RxSize} from "react-icons/rx";
 import {RiCrop2Line} from "react-icons/ri";
 import {FiChevronRight} from "react-icons/fi";
+import {HiArrowNarrowLeft} from "react-icons/hi";
 
 const icons = {
   AiOutlineSearch,
@@ -20,6 +21,7 @@ const icons = {
   BsSuitHeartFill,
   BsSuitHeart,
   FiChevronRight,
+  HiArrowNarrowLeft,
 };
 
 export default icons;

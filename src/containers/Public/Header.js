@@ -69,7 +69,7 @@ const Header = () => {
             </div>
           )}
           <Button
-            text={"Đăng tin Mới"}
+            text={"Đăng tin mới"}
             textColor={"text-white"}
             bgColor={"bg-redPrimary"}
             styleOther={"hover:underline"}

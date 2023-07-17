@@ -2,17 +2,11 @@ import React, {useEffect} from "react";
 import Province from "../../components/Province";
 import List from "./List";
 import ItemSidebar from "../../components/ItemSidebar";
-import {useDispatch, useSelector} from "react-redux";
-import {getAreas, getPrices} from "../../store/action/appAction";
+import {useSelector} from "react-redux";
+import RelativePost from "../../components/RelativePost";
 
 const HomePage = () => {
-  const dispatch = useDispatch();
   const {categories, prices, areas} = useSelector((state) => state.app);
-
-  useEffect(() => {
-    dispatch(getPrices());
-    dispatch(getAreas());
-  }, []);
 
   return (
     <div className="w-full flex flex-col gap-3 px-3 lg:px-0">
@@ -48,6 +42,7 @@ const HomePage = () => {
             type={"areaCode"}
             title={"Xem theo diện tích"}
           />
+          <RelativePost />
         </div>
       </div>
     </div>

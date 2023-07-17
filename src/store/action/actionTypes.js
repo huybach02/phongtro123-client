@@ -7,9 +7,11 @@ const actionTypes = {
 
   GET_POSTS: "GET_POSTS",
   GET_POSTS_LIMIT: "GET_POSTS_LIMIT",
+  GET_NEW_POSTS: "GET_NEW_POSTS",
   GET_CATEGORIES: "GET_CATEGORIES",
   GET_PRICES: "GET_PRICE",
   GET_AREA: "GET_AREA",
+  GET_PROVINCE: "GET_PROVINCE",
 };
 
 export default actionTypes;

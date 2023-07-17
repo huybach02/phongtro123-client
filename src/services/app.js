@@ -27,3 +27,17 @@ export const apiGetAreas = () =>
       reject(error);
     }
   });
+
+export const apiGetProvinces = () =>
+  new Promise(async (resolve, reject) => {
+    try {
+      const res = axiosConfig({
+        method: "get",
+        url: "/api/v1/province/all",
+      });
+
+      resolve(res);
+    } catch (error) {
+      reject(error);
+    }
+  });

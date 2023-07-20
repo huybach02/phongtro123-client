@@ -31,7 +31,7 @@ const Item = ({
       <div className="w-2/5 flex flex-wrap gap-[2px] items-center relative cursor-pointer">
         {/* <div className="flex gap-1"> */}
         <Link
-          to={`chi-tiet/${formatVietnameseToSlug(
+          to={`/chi-tiet/${formatVietnameseToSlug(
             title.replace("/", "-")
           )}/${id}`}
           className="w-[280px] h-[240px]"
@@ -65,7 +65,7 @@ const Item = ({
               ))}
           </div>
           <Link
-            to={`chi-tiet/${formatVietnameseToSlug(
+            to={`/chi-tiet/${formatVietnameseToSlug(
               title.replace("/", "-")
             )}/${id}`}
           >

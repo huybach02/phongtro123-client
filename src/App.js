@@ -5,6 +5,7 @@ import Login from "./containers/Public/Login";
 import HomePage from "./containers/Public/HomePage";
 import DetailPost from "./containers/Public/DetailPost";
 import ChoThue from "./containers/Public/ChoThue";
+import SearchDetail from "./containers/Public/SearchDetail";
 
 function App() {
   return (
@@ -17,10 +18,16 @@ function App() {
           <Route path={path.CHO_THUE_MAT_BANG} element={<ChoThue />} />
           <Route path={path.CHO_THUE_PHONG_TRO} element={<ChoThue />} />
           <Route path={path.NHA_CHO_THUE} element={<ChoThue />} />
+          <Route path={path.SEARCH} element={<SearchDetail />} />
           <Route
             path={path.DETAIL_POST__TITLE__POST_ID}
             element={<DetailPost />}
           />
+          {/* <Route
+            path={path.CHO_THUE_CAN_HO__DETAIL_POST__TITLE__POST_ID}
+            element={<DetailPost />}
+          /> */}
+          <Route path={"chi-tiet/*"} element={<DetailPost />} />
         </Route>
       </Routes>
     </div>

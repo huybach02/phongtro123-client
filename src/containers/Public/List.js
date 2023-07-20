@@ -18,12 +18,17 @@ const List = ({categoryCode}) => {
       param.push(entry);
     }
     let searchParamObject = {};
-    param?.map(
-      (item) => (searchParamObject = {...searchParamObject, [item[0]]: item[1]})
-    );
+    param?.forEach((item) => {
+      if (Object.keys(searchParamObject)?.some((i) => i === item[0])) {
+        searchParamObject[item[0]] = [...searchParamObject[item[0]], item[1]];
+      } else {
+        searchParamObject = {...searchParamObject, [item[0]]: [item[1]]};
+      }
+    });
     if (categoryCode) {
       searchParamObject.categoryCode = categoryCode;
     }
+    console.log("searchParamObject: ", searchParamObject);
 
     dispatch(getPostsLimit(searchParamObject));
   }, [params, categoryCode]);

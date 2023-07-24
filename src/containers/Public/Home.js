@@ -5,17 +5,20 @@ import Navbar from "./Navbar";
 import Search from "./Search";
 import Intro from "../../components/Intro";
 import Contact from "../../components/Contact";
-import {getAreas, getPrices, getProvinces} from "../../store/action/appAction";
-import {useDispatch} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
+import {getCurrentUser} from "../../store/action/userAction";
 
 const Home = () => {
   const dispatch = useDispatch();
+  const {isLogin} = useSelector((state) => state.auth);
 
   useEffect(() => {
-    dispatch(getPrices());
-    dispatch(getAreas());
-    dispatch(getProvinces());
-  }, []);
+    const timeout = setTimeout(() => {
+      isLogin && dispatch(getCurrentUser());
+    }, 500);
+
+    return () => clearTimeout(timeout);
+  }, [isLogin]);
 
   return (
     <div className="w-full h-full flex flex-col items-center">

@@ -28,9 +28,13 @@ const data = [
   },
 ];
 
-const Contact = () => {
+const Contact = ({isFull}) => {
   return (
-    <div className="mt-5 lg:w-1100 sm:w-full py-10 px-[50px] bg-white flex flex-col  gap-10 rounded-lg border-[7px] border-dashed border-[#e8eefc]">
+    <div
+      className={`mt-5 ${
+        isFull ? "w-full" : "lg:w-1100 sm:w-full"
+      } py-10 px-[50px] bg-white flex flex-col  gap-10 rounded-lg border-[7px] border-dashed border-[#e8eefc]`}
+    >
       <img
         src="https://phongtro123.com/images/support-bg.jpg"
         alt=""

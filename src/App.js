@@ -6,8 +6,21 @@ import HomePage from "./containers/Public/HomePage";
 import DetailPost from "./containers/Public/DetailPost";
 import ChoThue from "./containers/Public/ChoThue";
 import SearchDetail from "./containers/Public/SearchDetail";
+import System from "./containers/System/System";
+import CreatePost from "./containers/System/CreatePost";
+import {useEffect} from "react";
+import {useDispatch} from "react-redux";
+import {getAreas, getPrices, getProvinces} from "./store/action/appAction";
 
 function App() {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getPrices());
+    dispatch(getAreas());
+    dispatch(getProvinces());
+  }, []);
+
   return (
     <div className=" bg-greyPrimary">
       <Routes>
@@ -28,6 +41,9 @@ function App() {
             element={<DetailPost />}
           /> */}
           <Route path={"chi-tiet/*"} element={<DetailPost />} />
+        </Route>
+        <Route path={path.SYSTEM} element={<System />}>
+          <Route path={path.CREATE_POST} element={<CreatePost />} />
         </Route>
       </Routes>
     </div>

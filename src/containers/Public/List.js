@@ -28,7 +28,6 @@ const List = ({categoryCode}) => {
     if (categoryCode) {
       searchParamObject.categoryCode = categoryCode;
     }
-    console.log("searchParamObject: ", searchParamObject);
 
     dispatch(getPostsLimit(searchParamObject));
   }, [params, categoryCode]);

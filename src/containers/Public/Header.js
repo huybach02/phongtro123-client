@@ -1,4 +1,4 @@
-import React, {useCallback, useEffect, useRef} from "react";
+import React, {useCallback, useEffect, useRef, useState} from "react";
 import logo from "../../assets/logo.png";
 import Button from "../../components/Button";
 import icons from "../../utils/icons";
@@ -6,10 +6,13 @@ import {useNavigate, Link, useSearchParams} from "react-router-dom";
 import {path} from "../../utils/constant";
 import {useSelector, useDispatch} from "react-redux";
 import {logout} from "../../store/action/authAction";
+import {menuManage} from "../../utils/constant";
+import User from "../../components/User";
 
-const {AiOutlinePlusCircle} = icons;
+const {AiOutlinePlusCircle, AiOutlineCaretDown, ImExit} = icons;
 
 const Header = () => {
+  const [isShowMenu, setIsShowMenu] = useState(false);
   const [params] = useSearchParams();
   const dispatch = useDispatch();
   const {isLogin} = useSelector((state) => state.auth);
@@ -57,15 +60,40 @@ const Header = () => {
             </div>
           )}
           {isLogin && (
-            <div className="flex items-center gap-3">
-              <span>Ten user</span>
+            <div className="flex items-center gap-3 relative">
+              <User />
               <Button
-                text={"Đăng Xuất"}
+                IconAfter={AiOutlineCaretDown}
+                text={"Quản lý tài khoản"}
                 textColor={"text-white"}
                 styleOther={"hover:underline"}
-                bgColor={"bg-hover"}
-                onClick={() => dispatch(logout())}
+                bgColor={"bg-bluePrimary"}
+                onClick={() => setIsShowMenu((prev) => !prev)}
               />
+              {isShowMenu && (
+                <div className="absolute bg-white top-full  right-0 shadow-md px-3 py-2 rounded-lg min-w-[200px] flex flex-col mt-1">
+                  {menuManage.map((item) => (
+                    <Link
+                      key={item.id}
+                      to={item?.path}
+                      className="py-2 border-b border-l-greyPrimary last:border-none font-semibold text-bluePrimary hover:text-hover flex items-center gap-2"
+                    >
+                      {item.icon}
+                      {item.text}
+                    </Link>
+                  ))}
+                  <span
+                    className="py-2 font-semibold text-redPrimary cursor-pointer flex items-center gap-2"
+                    onClick={() => {
+                      dispatch(logout());
+                      setIsShowMenu(false);
+                    }}
+                  >
+                    <ImExit />
+                    Đăng xuất
+                  </span>
+                </div>
+              )}
             </div>
           )}
           <Button

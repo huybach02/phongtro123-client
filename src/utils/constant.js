@@ -1,3 +1,7 @@
+import icons from "./icons";
+
+const {IoIosCreate, FaUserCircle, FaClipboardList, MdContactSupport} = icons;
+
 export const path = {
   HOME: "/*",
   HOME__PAGE: ":page",
@@ -8,6 +12,8 @@ export const path = {
   NHA_CHO_THUE: "nha-cho-thue",
   DETAIL_POST__TITLE__POST_ID: "chi-tiet/:title/:postId",
   SEARCH: "tim-kiem",
+  SYSTEM: "/he-thong/*",
+  CREATE_POST: "tao-moi-bai-dang",
   // CHO_THUE_CAN_HO__DETAIL_POST__TITLE__POST_ID:
   //   "cho-thue-can-ho/chi-tiet/:title/:postId",
 };
@@ -20,3 +26,51 @@ export const formatVietnameseToSlug = (string) => {
     .split(" ")
     .join("-");
 };
+
+export const menuManage = [
+  {
+    id: 1,
+    text: "Đăng tin cho thuê",
+    path: "/he-thong/tao-moi-bai-dang",
+    icon: <IoIosCreate />,
+  },
+  {
+    id: 2,
+    text: "Quản lý tin đăng",
+    path: "/he-thong/quan-ly-bai-dang",
+    icon: <FaClipboardList />,
+  },
+  {
+    id: 3,
+    text: "Thông tin tài khoản",
+    path: "/he-thong/thong-tin-tai-khoan",
+    icon: <FaUserCircle />,
+  },
+];
+
+export const menuSidebar = [
+  {
+    id: 1,
+    text: "Đăng tin cho thuê",
+    path: "/he-thong/tao-moi-bai-dang",
+    icon: <IoIosCreate />,
+  },
+  {
+    id: 2,
+    text: "Quản lý tin đăng",
+    path: "/he-thong/quan-ly-bai-dang",
+    icon: <FaClipboardList />,
+  },
+  {
+    id: 3,
+    text: "Sửa thông tin cá nhân",
+    path: "/he-thong/sua-thong-tin-ca-nhan",
+    icon: <FaUserCircle />,
+  },
+  {
+    id: 4,
+    text: "Liên hệ",
+    path: "/lien-he",
+    icon: <MdContactSupport />,
+  },
+];

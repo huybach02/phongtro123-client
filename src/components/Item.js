@@ -18,6 +18,16 @@ const Item = ({
 }) => {
   const navigate = useNavigate();
 
+  const descFormat = description.includes('["')
+    ? `${(description.length > 180
+        ? `${description.slice(0, 180)}...`
+        : description
+      ).slice(2, -2)}`
+    : `${(description.length > 180
+        ? `${description.slice(0, 180)}...`
+        : description
+      ).slice(1, -1)}`;
+
   const handleStar = (star) => {
     let stars = [];
     for (let i = 1; i <= +star; i++) {
@@ -83,12 +93,7 @@ const Item = ({
             },${address.split(",")[address.split(",").length - 1]}`}</span>
           </div>
         </div>
-        <p className="text-[14px] text-greyPrimary">
-          {`${(description.length > 180
-            ? `${description.slice(0, 180)}...`
-            : description
-          ).slice(2)}`}
-        </p>
+        <p className="text-[14px] text-greyPrimary">{descFormat}</p>
         <div className="mt-5 flex items-center justify-between">
           <div className="flex items-center gap-2">
             <img

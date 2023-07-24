@@ -10,6 +10,15 @@ instance.interceptors.request.use(
     // Do something before request is sent
 
     // Gan token vao header truoc khi gui data den server
+    let token =
+      window.localStorage.getItem("persist:auth") &&
+      JSON.parse(window.localStorage.getItem("persist:auth"))?.token?.slice(
+        1,
+        -1
+      );
+    config.headers = {
+      Authorization: token ? `Bearer ${token}` : null,
+    };
     return config;
   },
   function (error) {

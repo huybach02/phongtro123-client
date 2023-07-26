@@ -3,7 +3,7 @@ import Navbar from "../Public/Navbar";
 
 const HeaderSystem = () => {
   return (
-    <div className="w-full flex flex-none h-[40px]">
+    <div className="w-full flex flex-none h-[40px] fixed top-0 z-10">
       <div className="flex items-center justify-center font-bold bg-bluePrimary text-white text-[18px] cursor-pointer w-[250px] flex-none">
         Phongtro123.com
       </div>

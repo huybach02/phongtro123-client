@@ -23,12 +23,12 @@ const System = () => {
   }
 
   return (
-    <div className="w-full min-h-screen flex flex-col items-center">
+    <div className="w-full min-h-screen flex flex-col items-center ">
       <HeaderSystem />
 
-      <div className="w-full flex flex-auto">
+      <div className="w-full h-full flex flex-auto mt-[40px] relative">
         <Sidebar />
-        <div className="flex-auto bg-white p-4">
+        <div className="flex-auto bg-white p-4 ml-[256px]">
           <Outlet />
         </div>
       </div>

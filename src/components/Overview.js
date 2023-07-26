@@ -19,7 +19,7 @@ const target = [
   },
 ];
 
-const Overview = ({payload, setPayload}) => {
+const Overview = ({payload, setPayload, invalidFields, setInvalidFields}) => {
   const {categories} = useSelector((state) => state.app);
   const {currentUserData} = useSelector((state) => state.user);
 
@@ -34,6 +34,8 @@ const Overview = ({payload, setPayload}) => {
             name="categoryCode"
             label={"Loại chuyên mục"}
             option={categories}
+            invalidFields={invalidFields}
+            setInvalidFields={setInvalidFields}
           />
         </div>
         <div className="mt-5">
@@ -42,6 +44,8 @@ const Overview = ({payload, setPayload}) => {
             setValue={setPayload}
             label={"Tiêu đề"}
             name={"title"}
+            invalidFields={invalidFields}
+            setInvalidFields={setInvalidFields}
           />
         </div>
         <div className="flex flex-col mt-5 gap-1">
@@ -57,7 +61,13 @@ const Overview = ({payload, setPayload}) => {
             onChange={(e) =>
               setPayload((prev) => ({...prev, description: e.target.value}))
             }
+            onFocus={() => setInvalidFields([])}
           />
+          <small className="text-red-500">
+            {invalidFields?.some((item) => item.name === "description") &&
+              invalidFields?.find((item) => item.name === "description")
+                ?.message}
+          </small>
         </div>
         <div className="w-1/2 mt-5 flex flex-col gap-5">
           <InputReadOnly
@@ -75,6 +85,8 @@ const Overview = ({payload, setPayload}) => {
             value={payload.priceNumber}
             setValue={setPayload}
             type={"number"}
+            invalidFields={invalidFields}
+            setInvalidFields={setInvalidFields}
           />
         </div>
         <div className="mt-5 w-1/2">
@@ -85,6 +97,8 @@ const Overview = ({payload, setPayload}) => {
             value={payload.areaNumber}
             setValue={setPayload}
             type={"number"}
+            invalidFields={invalidFields}
+            setInvalidFields={setInvalidFields}
           />
         </div>
         <div className="w-1/2 mt-5">
@@ -94,6 +108,8 @@ const Overview = ({payload, setPayload}) => {
             value={payload.target}
             setValue={setPayload}
             name={"target"}
+            invalidFields={invalidFields}
+            setInvalidFields={setInvalidFields}
           />
         </div>
       </div>

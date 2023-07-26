@@ -79,13 +79,17 @@ const Item = ({
               title.replace("/", "-")
             )}/${id}`}
           >
-            <h2 className="text-redPrimary font-bold text-[14px] hover:underline cursor-pointer">
-              {title}
+            <h2 className="text-redPrimary font-bold text-[18px] hover:underline cursor-pointer">
+              {title.length > 92 ? `${title.slice(0, 92)}...` : title}
             </h2>
           </Link>
           <div className="flex items-center gap-x-5 flex-wrap py-2">
             <span className="text-[16px] font-bold text-greenPrimary">
-              {attributes?.price}
+              {attributes?.price.split(" ")[0] % 1000 === 0
+                ? `${attributes?.price.split(" ")[0] / 1000}.000 ${
+                    attributes?.price.split(" ")[1]
+                  }`
+                : attributes?.price}
             </span>
             <span className="text-[14px]">{attributes?.acreage}</span>
             <span className="text-[14px]">{`${

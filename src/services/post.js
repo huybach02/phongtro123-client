@@ -73,3 +73,48 @@ export const apiCreatePost = (payload) =>
       reject(error);
     }
   });
+
+export const apiGetPostsLimitAdmin = (query) =>
+  new Promise(async (resolve, reject) => {
+    try {
+      const res = axiosConfig({
+        method: "get",
+        url: `/api/v1/post/limit-admin`,
+        params: query,
+      });
+
+      resolve(res);
+    } catch (error) {
+      reject(error);
+    }
+  });
+
+export const apiUpdatePost = (payload) =>
+  new Promise(async (resolve, reject) => {
+    try {
+      const res = axiosConfig({
+        method: "put",
+        url: `/api/v1/post/update-post`,
+        data: payload,
+      });
+
+      resolve(res);
+    } catch (error) {
+      reject(error);
+    }
+  });
+
+export const apiDeletePost = (postId) =>
+  new Promise(async (resolve, reject) => {
+    try {
+      const res = axiosConfig({
+        method: "delete",
+        url: `/api/v1/post/delete-post`,
+        params: {postId},
+      });
+
+      resolve(res);
+    } catch (error) {
+      reject(error);
+    }
+  });

@@ -41,7 +41,9 @@ const ItemSidebar = ({content, title, isCategory, type}) => {
                 </Link>
               )}
               {!isCategory && (
-                <div onClick={() => handleFilter(item.code)}>{item.value}</div>
+                <div onClick={() => handleFilter(item.code)}>
+                  {item.value.replace("m", "m2")}
+                </div>
               )}
             </div>
           ))}

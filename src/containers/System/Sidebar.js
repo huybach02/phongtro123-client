@@ -4,6 +4,7 @@ import {menuSidebar} from "../../utils/constant";
 import {NavLink} from "react-router-dom";
 import icons from "../../utils/icons";
 import {logout} from "../../store/action/authAction";
+import {blobToBase64} from "../../utils/toBase64";
 
 const {ImExit} = icons;
 
@@ -22,7 +23,10 @@ const Sidebar = () => {
       <div className="flex flex-col gap-3">
         <div className="flex items-center gap-2 ">
           <img
-            src="https://api-private.atlassian.com/users/d4a1567a7fb3b33b05ee3d965080ee6a/avatar"
+            src={
+              blobToBase64(currentUserData?.avatar) ||
+              "https://api-private.atlassian.com/users/d4a1567a7fb3b33b05ee3d965080ee6a/avatar"
+            }
             alt=""
             className="w-8 h-8 object-cover rounded-full"
           />

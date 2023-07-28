@@ -1,5 +1,6 @@
 import React from "react";
 import {useSelector} from "react-redux";
+import {blobToBase64} from "../utils/toBase64";
 
 const User = () => {
   const {currentUserData} = useSelector((state) => state.user);
@@ -8,7 +9,7 @@ const User = () => {
     <div className="flex items-center gap-2">
       <img
         src={
-          currentUserData?.avatar ||
+          blobToBase64(currentUserData?.avatar) ||
           "https://api-private.atlassian.com/users/d4a1567a7fb3b33b05ee3d965080ee6a/avatar"
         }
         alt=""

@@ -10,13 +10,18 @@ const InputForm2 = ({
   type,
   invalidFields,
   setInvalidFields,
+  flexRow,
 }) => {
   return (
-    <div className="flex flex-col gap-1">
-      <label htmlFor="title" className="font-bold">
+    <div
+      className={`${
+        !flexRow ? "flex flex-col gap-1" : "flex items-center justify-between"
+      }`}
+    >
+      <label htmlFor="title" className="font-bold w-[200px] flex-none">
         {label}
       </label>
-      <div className="flex items-center">
+      <div className="flex items-center flex-auto">
         <input
           type={type || "text"}
           id="title"
@@ -27,7 +32,7 @@ const InputForm2 = ({
           onChange={(e) =>
             setValue((prev) => ({...prev, [name]: e.target.value}))
           }
-          onFocus={() => setInvalidFields([])}
+          onFocus={() => setInvalidFields && setInvalidFields([])}
         />
         {unit && (
           <span className="p-2 bg-gray-300 flex-none w-16 flex items-center justify-center border-2 border-gray-300 rounded-tr-md rounded-br-md">

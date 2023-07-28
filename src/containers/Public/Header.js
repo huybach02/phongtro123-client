@@ -8,10 +8,12 @@ import {useSelector, useDispatch} from "react-redux";
 import {logout} from "../../store/action/authAction";
 import {menuManage} from "../../utils/constant";
 import User from "../../components/User";
+import {useLocation} from "react-router-dom";
 
 const {AiOutlinePlusCircle, AiOutlineCaretDown, ImExit} = icons;
 
 const Header = () => {
+  const location = useLocation();
   const [isShowMenu, setIsShowMenu] = useState(false);
   const [params] = useSearchParams();
   const dispatch = useDispatch();
@@ -26,9 +28,18 @@ const Header = () => {
     });
   }, []);
 
-  useEffect(() => {
-    headerRef.current.scrollIntoView({behavior: "smooth", block: "start"});
-  }, [params.get("page")]);
+  useEffect(
+    () => {
+      headerRef.current.scrollIntoView({behavior: "smooth", block: "start"});
+    },
+    [
+      params.get("page"),
+      location.pathname === "/lien-he",
+      location.pathname.includes("chi-tiet"),
+      location.pathname.includes(""),
+    ],
+    params
+  );
 
   return (
     <div ref={headerRef} className="lg:w-1100 sm:w-full sm:px-3 lg:px-0">
@@ -71,7 +82,7 @@ const Header = () => {
                 onClick={() => setIsShowMenu((prev) => !prev)}
               />
               {isShowMenu && (
-                <div className="absolute bg-white top-full  right-0 shadow-md px-3 py-2 rounded-lg min-w-[200px] flex flex-col mt-1">
+                <div className="absolute bg-white top-full  right-0 shadow-md px-3 py-2 rounded-lg min-w-[200px] flex flex-col mt-1 z-10">
                   {menuManage.map((item) => (
                     <Link
                       key={item.id}

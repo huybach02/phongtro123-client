@@ -2,6 +2,7 @@ import React, {memo} from "react";
 import icons from "../utils/icons";
 import {Link, useNavigate} from "react-router-dom";
 import {formatVietnameseToSlug} from "../utils/constant";
+import {blobToBase64} from "../utils/toBase64";
 
 const {AiFillStar, BsSuitHeartFill, BsSuitHeart} = icons;
 const indexs = [0];
@@ -101,7 +102,10 @@ const Item = ({
         <div className="mt-5 flex items-center justify-between">
           <div className="flex items-center gap-2">
             <img
-              src="https://phongtro123.com/images/default-user.png"
+              src={
+                blobToBase64(user?.avatar) ||
+                "https://phongtro123.com/images/default-user.png"
+              }
               alt=""
               className="w-[30px] h-[30px] object-cover rounded-full"
             />

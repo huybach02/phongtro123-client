@@ -12,6 +12,8 @@ import {useEffect} from "react";
 import {useDispatch} from "react-redux";
 import {getAreas, getPrices, getProvinces} from "./store/action/appAction";
 import ManagePost from "./containers/System/ManagePost";
+import EditAccount from "./containers/System/EditAccount";
+import Contact from "./containers/Public/Contact";
 
 function App() {
   const dispatch = useDispatch();
@@ -37,15 +39,13 @@ function App() {
             path={path.DETAIL_POST__TITLE__POST_ID}
             element={<DetailPost />}
           />
-          {/* <Route
-            path={path.CHO_THUE_CAN_HO__DETAIL_POST__TITLE__POST_ID}
-            element={<DetailPost />}
-          /> */}
-          <Route path={"chi-tiet/*"} element={<DetailPost />} />
+          <Route path={path.CONTACT} element={<Contact />} />
+          <Route path={path.DETAIL} element={<DetailPost />} />
         </Route>
         <Route path={path.SYSTEM} element={<System />}>
           <Route path={path.CREATE_POST} element={<CreatePost />} />
           <Route path={path.MANAGE_POST} element={<ManagePost />} />
+          <Route path={path.EDIT_ACCOUNT} element={<EditAccount />} />
         </Route>
       </Routes>
     </div>

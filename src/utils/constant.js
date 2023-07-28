@@ -15,6 +15,9 @@ export const path = {
   SYSTEM: "/he-thong/*",
   CREATE_POST: "tao-moi-bai-dang",
   MANAGE_POST: "quan-ly-bai-dang",
+  EDIT_ACCOUNT: "sua-thong-tin-ca-nhan",
+  CONTACT: "lien-he",
+  DETAIL: "chi-tiet/*",
   // CHO_THUE_CAN_HO__DETAIL_POST__TITLE__POST_ID:
   //   "cho-thue-can-ho/chi-tiet/:title/:postId",
 };
@@ -44,7 +47,7 @@ export const menuManage = [
   {
     id: 3,
     text: "Thông tin tài khoản",
-    path: "/he-thong/thong-tin-tai-khoan",
+    path: "/he-thong/sua-thong-tin-ca-nhan",
     icon: <FaUserCircle />,
   },
 ];

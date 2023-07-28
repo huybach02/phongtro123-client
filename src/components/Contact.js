@@ -1,5 +1,6 @@
 import React from "react";
 import Button from "./Button";
+import {Link} from "react-router-dom";
 
 const data = [
   {
@@ -58,12 +59,14 @@ const Contact = ({isFull}) => {
           </div>
         ))}
       </div>
-      <Button
-        text={"Gửi liên hệ"}
-        textColor={"text-white"}
-        bgColor={"bg-bluePrimary"}
-        styleOther={"hover:underline w-[150px] mx-auto"}
-      />
+      <Link to={"/lien-he"}>
+        <Button
+          text={"Gửi liên hệ"}
+          textColor={"text-white"}
+          bgColor={"bg-bluePrimary"}
+          styleOther={"hover:underline w-[150px] mx-auto"}
+        />
+      </Link>
     </div>
   );
 };

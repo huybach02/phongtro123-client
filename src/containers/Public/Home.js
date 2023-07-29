@@ -24,7 +24,6 @@ const Home = () => {
     <div className="w-full h-full flex flex-col items-center">
       <Header />
       <Navbar />
-      <Search />
 
       <div className="lg:w-[1100px] sm:w-full flex flex-col items-start justify-start mt-3">
         <Outlet />

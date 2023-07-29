@@ -113,6 +113,7 @@ const Header = () => {
             bgColor={"bg-redPrimary"}
             styleOther={"hover:underline"}
             IconAfter={AiOutlinePlusCircle}
+            onClick={() => navigate("/he-thong/tao-moi-bai-dang")}
           />
         </div>
       </div>

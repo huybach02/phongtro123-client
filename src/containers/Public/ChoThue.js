@@ -6,6 +6,7 @@ import RelativePost from "../../components/RelativePost";
 import {useSelector, useDispatch} from "react-redux";
 import {useLocation} from "react-router-dom";
 import {formatVietnameseToSlug} from "../../utils/constant";
+import Search from "./Search";
 
 const ChoThue = () => {
   const {prices, areas, categories} = useSelector((state) => state.app);
@@ -26,6 +27,7 @@ const ChoThue = () => {
   return (
     <div>
       <div className="w-full flex flex-col gap-3 px-3 lg:px-0">
+        <Search />
         <div>
           <h1 className="text-[28px] font-bold">
             {categoryCurrent?.header || ""}

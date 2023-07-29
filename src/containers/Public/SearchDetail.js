@@ -4,6 +4,7 @@ import ItemSidebar from "../../components/ItemSidebar";
 import RelativePost from "../../components/RelativePost";
 import {useSelector} from "react-redux";
 import {useLocation} from "react-router-dom";
+import Search from "./Search";
 
 const SearchDetail = () => {
   const location = useLocation();
@@ -12,6 +13,7 @@ const SearchDetail = () => {
   return (
     <div className="w-1100">
       <div className="w-full flex flex-col gap-3 px-3 lg:px-0">
+        <Search />
         <div>
           <h1 className="text-[24px] font-bold">
             {location?.state?.titleSearch || "Kết quả tìm kiếm"}

@@ -87,7 +87,9 @@ const Modal = ({
 
   const handleBeforeSubmit = (e) => {
     let arrMinMax =
-      persent1 < persent2
+      persent1 === persent2 && persent1 === 100
+        ? [convertToTarget(persent1 <= persent2 ? persent1 : persent2), 9999999]
+        : persent1 < persent2
         ? [convertToTarget(persent1), convertToTarget(persent2)]
         : [convertToTarget(persent2), convertToTarget(persent1)];
     // const gaps = getCodeFromMinMax(arrMinMax, content);
@@ -95,8 +97,10 @@ const Modal = ({
       e,
       {
         [`${name}Number`]: arrMinMax,
-        [name]: `Từ ${arrMinMax[0]} đến ${arrMinMax[1]} ${
-          name === "price" ? "triệu" : "m2"
+        [name]: `Từ ${arrMinMax[0]} ${
+          persent1 === persent2 && persent1 === 100
+            ? `${name === "price" ? "triệu trở lên" : "m2 trở lên"}`
+            : `đến ${arrMinMax[1]} ${name === "price" ? "triệu" : "m2"}`
         }`,
       },
       {

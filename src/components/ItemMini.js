@@ -1,10 +1,15 @@
 import React from "react";
 import moment from "moment";
 import "moment/locale/vi";
+import {Link} from "react-router-dom";
+import {formatVietnameseToSlug} from "../utils/constant";
 
-const ItemMini = ({title, image, price, time}) => {
+const ItemMini = ({title, image, price, time, id}) => {
   return (
-    <div className="flex items-center gap-2 py-2 border-b border-l-greyPrimary last:border-none cursor-pointer">
+    <Link
+      to={`/chi-tiet/${formatVietnameseToSlug(title.replace("/", "-"))}/${id}`}
+      className="flex items-center gap-2 py-2 border-b border-l-greyPrimary last:border-none cursor-pointer"
+    >
       <div className="w-[65px] h-[65px] flex-shrink">
         <img
           src={image}
@@ -25,7 +30,7 @@ const ItemMini = ({title, image, price, time}) => {
           </span>
         </div>
       </div>
-    </div>
+    </Link>
   );
 };
 

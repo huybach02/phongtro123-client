@@ -22,6 +22,7 @@ const RelativePost = () => {
             time={item?.createdAt}
             price={item?.attributes?.price}
             image={JSON.parse(item?.images?.image)[0]}
+            id={item?.id}
           />
         ))}
       </div>

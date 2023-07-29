@@ -271,7 +271,29 @@ const CreatePost = ({isUpdate}) => {
             onClick={handleSubmit}
           />
         </div>
-        <div className="w-[35%]">map</div>
+        <div className="w-[35%]">
+          <div className="p-5 bg-[#fff3cd] text-[#856404]">
+            <h2 className="text-[20px] font-bold ">Lưu ý khi đăng tin</h2>
+            <ul className="flex flex-col gap-1 mt-2">
+              <li>Nội dung phải viết bằng tiếng Việt có dấu</li>
+              <li>Tiêu đề tin không dài quá 100 kí tự</li>
+              <li>
+                Các bạn nên điền đầy đủ thông tin vào các mục để tin đăng có
+                hiệu quả hơn.
+              </li>
+              <li>
+                Để tăng độ tin cậy và tin rao được nhiều người quan tâm hơn, hãy
+                sửa vị trí tin rao của bạn trên bản đồ bằng cách kéo icon tới
+                đúng vị trí của tin rao.
+              </li>
+              <li>
+                Tin đăng có hình ảnh rõ ràng sẽ được xem và gọi gấp nhiều lần so
+                với tin rao không có ảnh. Hãy đăng ảnh để được giao dịch nhanh
+                chóng!
+              </li>
+            </ul>
+          </div>
+        </div>
       </div>
       <div className="h-[100px]"></div>
       {!isUpdate && (

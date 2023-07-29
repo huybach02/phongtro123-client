@@ -4,12 +4,14 @@ import List from "./List";
 import ItemSidebar from "../../components/ItemSidebar";
 import {useSelector} from "react-redux";
 import RelativePost from "../../components/RelativePost";
+import Search from "./Search";
 
 const HomePage = () => {
   const {categories, prices, areas} = useSelector((state) => state.app);
 
   return (
     <div className="w-full flex flex-col gap-3 px-3 lg:px-0">
+      <Search />
       <div>
         <h1 className="text-[28px] font-bold">
           Kênh thông tin Phòng Trọ số 1 Việt Nam
